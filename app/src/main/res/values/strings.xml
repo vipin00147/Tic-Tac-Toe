@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">Tic Tac Toe</string>
+    <string name="module">Module</string>
+    <string name="o_s_turn_tap_to_play">O\'s turn - Tap to play</string>
+    <string name="todo">TODO</string>
+    <string name="tic_tac_toe">Tic Tac Toe</string>
+</resources>
