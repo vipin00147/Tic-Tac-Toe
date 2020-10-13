@@ -2,6 +2,7 @@ package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
     }
     /*Player Description
         0-O
@@ -27,19 +29,21 @@ public class MainActivity extends AppCompatActivity {
                             {0,3,6},{1,4,7},{2,5,8},
                             {0,4,8},{2,4,6}};
     TextView  txt;
+    @SuppressLint("ResourceAsColor")
     public void tap(View view){
         ImageView img = (ImageView) view;
         txt = findViewById(R.id.status);
         txt.setTextColor(Color.BLACK);
         int position = Integer.parseInt(img.getTag().toString());
             if (tapPosition[position] == 2 && flag) {                      //To check tapped position is empty or not
-               // img.setTranslationY(-1000f);
+                img.setTranslationY(-1000f);
                 if (player == 0) {
                     img.setImageResource(R.drawable.o);
                     tapPosition[position] = player;
                     player = 1;
                     duce++;
                     txt.setText("X's turn - Tap to play");
+                    txt.setTextColor(Color.parseColor("#000000"));
                 }
                 else {
                     img.setImageResource(R.drawable.x);
@@ -47,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
                     player = 0;
                     duce++;
                     txt.setText("O's turn - Tap to play");
+                    txt.setTextColor(Color.parseColor("#F44336"));
                 }
-                //img.animate().translationYBy(1000f).setDuration(300);
+                img.animate().translationYBy(1000f).setDuration(200);
             }
         for(int [] winPositions : winPositions){
             if(tapPosition[winPositions[0]] == tapPosition[winPositions[1]] &&
